@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trabalho 1 - Linguagens Formais</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="bg-white main-container">
+                            <header>
+                                <h1><i class="fa fa-language" aria-hidden="true"></i> Trabalho 1 - Linguagens Formais</h1>
+                            </header>
+                            <section>
+                                <h3><i class="fa fa-info-circle"></i> Instruções:</h3>
+                                <ul>
+                                    <li>Entre com a expressão regular desejada no formulário abaixo.</li>
+                                    <li>Selecione a expressão regular desejada.</li>
+                                    <li>Aplique a operação de sua escolha.</li>
+                                </ul>
+                            </section>
+                            <section>
+                                <form>
+                                    <div class="form-group">
+                                        <input autofocus type="text" name="reInput" placeholder="Entre com uma expressão regular" id="reInput">
+                                        <button type="submit"
+                                                style="margin-bottom: 8px;"
+                                                onclick="controller.getInputValueAndDoSomething('reInput', app.addRegExpToList); event.preventDefault()"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+                                    </div>
+                                </form>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top: 10px;">
+                        <div class="bg-white main-container">
+                            <h4>Operações sobre Expressões Regulares</h4>
+                            <div class="row">
+                                <div class="col-sm-6 text-center">
+                                    <button class="big-button">Converter</button>
+                                </div>
+                                <div class="col-sm-6 text-center">
+                                    <button class="big-button">Comparar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="bg-white main-container">
+                    <h4><i class="fa fa-list" aria-hidden="true"></i> ExpRegulares Cadastradas</h4>
+                    <div  class="row" id="regExpList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+</html>
