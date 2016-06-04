@@ -58,14 +58,47 @@
                 console.error('Missing value');
             },
 
+            createListComponent = function (element, id) {
+                var regexpText = createDOMElement('h5', element),
+                    indexText = createDOMElement('h5', String(id + 1).concat('-')),
+                    mainDiv = createDOMElement('div'),
+                    rowDiv = createDOMElement('div'),
+                    numberCol = createDOMElement('div'),
+                    expCol = createDOMElement('div'),
+                    actionsCol = createDOMElement('div'),
+                    buttonEdit = createDOMElement('button'),
+                    buttonDelete = createDOMElement('button'),
+                    editIcon = createDOMElement('i'),
+                    deleteIcon = createDOMElement('i');
+
+                rowDiv.className = 'row';
+                numberCol.className = 'col-sm-2';
+                expCol.className = 'col-sm-6';
+                actionsCol.className = 'col-sm-4';
+                numberCol.appendChild(indexText);
+                editIcon.className = 'fa fa-pencil';
+                deleteIcon.className = 'fa fa-trash';
+                buttonEdit.appendChild(editIcon);
+                buttonEdit.className = 'edit-button';
+                buttonDelete.appendChild(deleteIcon);
+                buttonDelete.className = 'delete-button';
+                actionsCol.appendChild(buttonEdit);
+                actionsCol.appendChild(buttonDelete);
+                expCol.appendChild(regexpText);
+                rowDiv.appendChild(numberCol);
+                rowDiv.appendChild(expCol);
+                rowDiv.appendChild(actionsCol);
+                mainDiv.appendChild(rowDiv);
+                mainDiv.className = 'col-sm-12';
+                mainDiv.setAttribute('id', 'reglist-'.concat(id));
+
+                return mainDiv;
+            },
+
             refreshRegExpList = function (reList) {
                 cleanInnerElements(elementListId);
                 reList.forEach(function (element, index) {
-                    var h4 = createDOMElement('h5', element),
-                        div = createDOMElement('div');
-                    div.appendChild(h4);
-                    div.className = 'col-sm-12';
-                    div.setAttribute('id', 'reglist-'.concat(index));
+                    var div = createListComponent(element, index);
                     getElement(elementListId).appendChild(div);
                 });
             };
