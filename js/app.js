@@ -16,11 +16,16 @@
 
             getRegExpList = function () {
                 return regexpList;
+            },
+
+            removeRegExpList = function (id) {
+                regexpList.splice(id, 1);
             };
 
         return {
             addRegExpToList: addRegExpToList,
-            getRegExpList: getRegExpList
+            getRegExpList: getRegExpList,
+            removeRegExpList: removeRegExpList
         };
     }();
 

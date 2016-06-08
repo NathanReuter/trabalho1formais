@@ -58,6 +58,21 @@
                 console.error('Missing value');
             },
 
+            deleteButtonHanddler = function (id) {
+                return function () {
+                    app.removeRegExpList(id);
+                    refreshRegExpList(app.getRegExpList());
+                }
+            },
+
+            editionButtonHanddler = function (id, text, input) {
+                return function () {
+                    input.className = '';
+                    input.value = text.innerText;
+                    text.className = 'hide';
+                }
+            },
+
             createListComponent = function (element, id) {
                 var regexpText = createDOMElement('h5', element),
                     indexText = createDOMElement('h5', String(id + 1).concat('-')),
@@ -69,7 +84,8 @@
                     buttonEdit = createDOMElement('button'),
                     buttonDelete = createDOMElement('button'),
                     editIcon = createDOMElement('i'),
-                    deleteIcon = createDOMElement('i');
+                    deleteIcon = createDOMElement('i'),
+                    editionInput = createDOMElement('input');
 
                 rowDiv.className = 'row';
                 numberCol.className = 'col-sm-2';
@@ -80,11 +96,16 @@
                 deleteIcon.className = 'fa fa-trash';
                 buttonEdit.appendChild(editIcon);
                 buttonEdit.className = 'edit-button';
+                buttonEdit.addEventListener('click', editionButtonHanddler(id, regexpText, editionInput));
                 buttonDelete.appendChild(deleteIcon);
                 buttonDelete.className = 'delete-button';
+                buttonDelete.addEventListener('click', deleteButtonHanddler(id));
                 actionsCol.appendChild(buttonEdit);
                 actionsCol.appendChild(buttonDelete);
+                editionInput.className = 'hide';
+                editionInput.setAttribute('id', 'input-'.concat(id))
                 expCol.appendChild(regexpText);
+                expCol.appendChild(editionInput);
                 rowDiv.appendChild(numberCol);
                 rowDiv.appendChild(expCol);
                 rowDiv.appendChild(actionsCol);
