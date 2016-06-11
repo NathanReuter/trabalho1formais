@@ -14,6 +14,10 @@
                 controller.cleanRegExpInput();
             },
 
+            updateRegExp = function (index, newValue) {
+                regexpList[index] = newValue;
+            },
+
             getRegExpList = function () {
                 return regexpList;
             },
@@ -25,7 +29,8 @@
         return {
             addRegExpToList: addRegExpToList,
             getRegExpList: getRegExpList,
-            removeRegExpList: removeRegExpList
+            removeRegExpList: removeRegExpList,
+            updateRegExp: updateRegExp
         };
     }();
 

@@ -30,6 +30,7 @@
                                     <div class="form-group">
                                         <input autofocus type="text" name="reInput" placeholder="Entre com uma expressão regular"
                                         id="reInput"
+                                        class="main-input"
                                         style="width: 275px;">
                                         <button type="submit"
                                                 style="margin-bottom: 8px;"
@@ -40,16 +41,43 @@
                         </div>
                     </div>
                     <div class="col-sm-12" style="margin-top: 10px;">
-                        <div class="bg-white main-container">
+                        <!-- Menu View -->
+                        <div class="bg-white main-container" id="menu-view">
                             <h4>Operações sobre Expressões Regulares</h4>
                             <div class="row">
                                 <div class="col-sm-6 text-center">
-                                    <button class="big-button">Converter</button>
+                                    <button class="big-button" onclick="controller.showMenuView('converexp-view')">
+                                    <i class="fa fa-exchange" aria-hidden="true"></i>
+                                    <br>
+                                    <small>Converter</small>
+                                    </button>
                                 </div>
                                 <div class="col-sm-6 text-center">
-                                    <button class="big-button">Comparar</button>
+                                    <button class="big-button" onclick="controller.showMenuView('compare-view')">
+                                    <i class="fa fa-compress" aria-hidden="true"></i>
+                                    <br>
+                                    <small>Comparar</small>
+                                    </button>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Convert Expressions View -->
+
+                        <div class="bg-white main-container hide" id="converexp-view">
+                            <h4><a onclick="controller.showMenuView('menu-view')"><i class="fa fa-chevron-circle-left" aria-hidden="true"> Voltar</i></a></h4>
+                            <h4>
+                                Escolha a Expressão para ser convertida
+                            </h4>
+                        </div>
+
+                        <!-- Compare Expressions View -->
+
+                        <div class="bg-white main-container hide" id="compare-view">
+                            <h4><a onclick="controller.showMenuView('menu-view')"><i class="fa fa-chevron-circle-left" aria-hidden="true"> Voltar</i></a></h4>
+                            <h4>
+                                Escolha a Expressão para ser Comparada
+                            </h4>
                         </div>
                     </div>
                 </div>

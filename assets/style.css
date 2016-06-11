@@ -51,9 +51,6 @@ button {
 }
 
 input {
-    padding: 4px;
-    padding-top: 10px;
-    padding-right: 2%;
     color: gray;
     font-size: 16px;
 }
@@ -108,14 +105,13 @@ input:focus , button{
 }
 
 .big-button {
-    padding: 3em;
+    padding: 2em;
     margin-top: 40px;
+    font-size: large;
 }
 
 .edit-button {
     background: grey;
-    padding: .2em 0.6em;
-    margin-right: 2px;
 }
 
 .edit-button:hover {
@@ -124,9 +120,35 @@ input:focus , button{
 
 .delete-button {
     background: red;
-    padding: .2em 0.6em;
 }
 
 .delete-button:hover {
     background: darkred;
+}
+
+.edit-button,
+.confirm-button,
+.delete-button{
+    padding: .2em 0.6em;
+}
+
+.edit-button,
+.confirm-button {
+    margin-right: 2px;
+}
+
+.main-input {
+    padding: 4px;
+    padding-top: 10px;
+    padding-right: 2%;
+}
+
+#regExpList {
+    h5 {
+        margin-top: 1px;
+    }
+}
+
+a {
+    cursor: pointer;
 }
