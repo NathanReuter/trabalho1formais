@@ -33,10 +33,12 @@
             },
 
             cleanInnerElements = function (element) {
-                var node = getElement(element);
+                if (element) {
+                    var node = element instanceof HTMLElement ? element : getElement(element);
 
-                while (node.hasChildNodes()) {
-                    node.removeChild(node.lastChild);
+                    while (node && node.hasChildNodes()) {
+                        node.removeChild(node.lastChild);
+                    }
                 }
             },
 
@@ -67,7 +69,6 @@
             },
 
             hideElement = function (element) {
-                console.log(element);
                 if (element.className.search('hide') === -1) {
                     element.className = element
                     .className
@@ -95,6 +96,7 @@
                         showElement(text);
                         showElement(thisButton);
                         confirmButton.removeEventListener('click', function () {});
+                        loadSelectors();
                     });
                 };
             },
@@ -155,6 +157,8 @@
                     var div = createListComponent(element, index);
                     getElement(elementListId).appendChild(div);
                 });
+
+                loadSelectors();
             },
 
             showMenuView = function (view) {
@@ -163,6 +167,20 @@
                 });
 
                 showElement(getElement(view));
+            },
+
+            loadSelectors = function () {
+                var selectors = document.querySelectorAll('select');
+
+                [].forEach.call(selectors, function (el) {
+                    cleanInnerElements(el);
+                    app.getRegExpList().forEach(function (regexp) {
+                        var option = createDOMElement('option', regexp);
+
+                        option.value = regexp;
+                        el.appendChild(option);
+                    });
+                });
             };
 
         return {
@@ -175,7 +193,6 @@
     }();
 
     window.controller = controller;
-
 })();
 
 
